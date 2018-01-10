@@ -1,0 +1,28 @@
+{
+  "name": "xxxx",
+  "version": "1.0.0",
+  "main": "./app/server.js",
+  "author": "Omowunmi Adeniran",
+  "license": "ISC",
+  "test command": "./node_modules/.bin/_mocha",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.1",
+    "mongoose": "^5.0.0-rc1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^1.0.0",
+    "mocha": "^4.1.0",
+    "request": "^2.83.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "_mocha"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "description": ""
+}
