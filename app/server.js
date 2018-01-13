@@ -98,18 +98,17 @@ router.route('/admin/event/:event_id')
             if(err)
                 res.send(err);
             //update the event's info
-            event.name = req.body.name;
             event.eventName = req.body.name;
 			      event.eventDescription = req.body.description;
-			event.eventLocation["longitude"] = req.body.longitude;
-	  		event.eventLocation["latitude"] = req.body.latitude;
-	  		event.eventDuration["from"] = req.body.from_Date;
-	  		event.eventDuration["to"] = req.body.to_Date;
-	  		event.freeOrPaid = req.body.freeOrPaid;
-	  		event.eventPrices["regular"] = req.body.regular;
-	  		event.eventPrices["vip"] = req.body.vip;
-	  		event.eventPrices["vvip"] = req.body.vvip;
-	  		event.eventOrganisers = req.body.organisers;
+			      event.eventLocation["longitude"] = req.body.longitude;
+	  		    event.eventLocation["latitude"] = req.body.latitude;
+	  		    event.eventDuration["from"] = req.body.from_Date;
+	  		    event.eventDuration["to"] = req.body.to_Date;
+	  		    event.freeOrPaid = req.body.freeOrPaid;
+	  		    event.eventPrices["regular"] = req.body.regular;
+	  		    event.eventPrices["vip"] = req.body.vip;
+	  		    event.eventPrices["vvip"] = req.body.vvip;
+	  		    event.eventOrganisers = req.body.organisers;
  
             
             //save the event
@@ -160,3 +159,4 @@ if(!module.parent) {
 }
 
 console.log('Magic happens on port ' + port);
+module.exports = app;
