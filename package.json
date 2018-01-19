@@ -9,7 +9,9 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongodb": "^3.0.1",
-    "mongoose": "^5.0.0-rc1"
+    "mongoose": "^5.0.0-rc1",
+    "sinon": "^4.1.6",
+    "sinon-mongoose": "^2.0.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",

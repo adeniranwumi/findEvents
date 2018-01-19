@@ -7,17 +7,17 @@ var bodyParser = require("body-parser");   //calls body-parser
 var mongoose = require('mongoose');
 var mongo = require('mongodb');
 var env = process.env.NODE_ENV || 'development'; //reading the configuration specific to our current Node environment, if none is found, default to development
-var config = require('./_config');
+// var config = require('./_config');
 
 mongoose.connect("mongodb://localhost:27017/mydb"); //grabs the mongoose package and connects to my database
 
-mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
-  if(err) {
-    console.log('Error connecting to the database. ' + err);
-  } else {
-    console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
-  }
-});
+// mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
+//   if(err) {
+//     console.log('Error connecting to the database. ' + err);
+//   } else {
+//     console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
+//   }
+// });
 
 var Event = require('../app/models/event');
 
@@ -98,17 +98,18 @@ router.route('/admin/event/:event_id')
             if(err)
                 res.send(err);
             //update the event's info
+            event.name = req.body.name;
             event.eventName = req.body.name;
 			      event.eventDescription = req.body.description;
-			      event.eventLocation["longitude"] = req.body.longitude;
-	  		    event.eventLocation["latitude"] = req.body.latitude;
-	  		    event.eventDuration["from"] = req.body.from_Date;
-	  		    event.eventDuration["to"] = req.body.to_Date;
-	  		    event.freeOrPaid = req.body.freeOrPaid;
-	  		    event.eventPrices["regular"] = req.body.regular;
-	  		    event.eventPrices["vip"] = req.body.vip;
-	  		    event.eventPrices["vvip"] = req.body.vvip;
-	  		    event.eventOrganisers = req.body.organisers;
+			event.eventLocation["longitude"] = req.body.longitude;
+	  		event.eventLocation["latitude"] = req.body.latitude;
+	  		event.eventDuration["from"] = req.body.from_Date;
+	  		event.eventDuration["to"] = req.body.to_Date;
+	  		event.freeOrPaid = req.body.freeOrPaid;
+	  		event.eventPrices["regular"] = req.body.regular;
+	  		event.eventPrices["vip"] = req.body.vip;
+	  		event.eventPrices["vvip"] = req.body.vvip;
+	  		event.eventOrganisers = req.body.organisers;
  
             
             //save the event
@@ -159,4 +160,3 @@ if(!module.parent) {
 }
 
 console.log('Magic happens on port ' + port);
-module.exports = app;
