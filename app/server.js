@@ -9,7 +9,15 @@ var mongo = require('mongodb');
 var env = process.env.NODE_ENV || 'development'; //reading the configuration specific to our current Node environment, if none is found, default to development
 // var config = require('./_config');
 
-mongoose.connect("mongodb://localhost:27017/mydb"); //grabs the mongoose package and connects to my database
+//return a test db if the environment is test
+
+if(process.env.NODE_ENV == 'test'){
+    mongoose.connect("mongodb://localhost:27017/mydb_test_events");
+}else{
+    mongoose.connect("mongodb://localhost:27017/mydb");
+}
+
+ //grabs the mongoose package and connects to my database
 
 // mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
 //   if(err) {
@@ -160,3 +168,5 @@ if(!module.parent) {
 }
 
 console.log('Magic happens on port ' + port);
+
+ module.exports = app;
